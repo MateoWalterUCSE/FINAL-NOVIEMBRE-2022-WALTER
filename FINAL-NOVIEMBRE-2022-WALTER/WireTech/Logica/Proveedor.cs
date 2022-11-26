@@ -25,5 +25,8 @@ namespace Logica
             saldo = Saldo;
             eventos = Evento;
         }
+
+        
+//CORRECCIONES: Se necesita un método para agregar eventos y que sea este metodo el que calcule el saldo
     }
 }

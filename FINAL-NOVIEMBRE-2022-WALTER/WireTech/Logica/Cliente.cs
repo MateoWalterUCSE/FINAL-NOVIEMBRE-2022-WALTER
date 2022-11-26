@@ -13,7 +13,7 @@ namespace Logica
         public string apellido { get; set; }
         public DateTime fechaNacimiento { get; set; }
         public int nivel { get; set; }
-
+//CORRECCIONES: No es correcto abusar de constructores, si creamos constructores custom tenemos que crear un constructor base
         public Cliente(int Dni, string Nombre, string Apellido, DateTime FechaNacimiento, int Nivel)
         {
             dni = Dni;

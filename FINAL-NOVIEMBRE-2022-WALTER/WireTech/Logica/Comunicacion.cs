@@ -10,6 +10,7 @@ namespace Logica
     {
         public ZonasPais zona { get; set; }
 
+//CORRECCIONES: No es correcto abusar de constructores, si creamos constructores custom tenemos que crear un constructor base
         public Comunicacion(int CodigoEntidad, string Nombre, string Descripcion, DateTime Vencimiento, int CodigoProveedor, string Categoria, string Zona)
             : base(CodigoEntidad, Nombre, Descripcion, Vencimiento, CodigoProveedor, Categoria)
         {

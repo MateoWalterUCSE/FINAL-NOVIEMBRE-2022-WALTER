@@ -24,6 +24,7 @@ namespace Logica
         {
             int Nivel = 0;
             int CantidadEntidadesRegistradas = 0;
+            //CORRECCIONES: En este código se repiten las entidades si pagó mas de una vez una entidad
             foreach (Pago pago in Pagos)
             {
                 if (pago.dni == Dni)
@@ -51,6 +52,7 @@ namespace Logica
         public void CargarEntidad(string Nombre, string Descripcion, int CodigoProveedor, string Categoria)
         {
             int CodigoEntidad = Entidades.Count + 1;
+            //CORRECCIONES: INCORRECTO. Esto debe resolverse por abstracción, utilizando la herencia realizada.
             switch (Categoria)
             {
                 case "Servicios Eléctricos":
@@ -71,6 +73,7 @@ namespace Logica
         public void CargarPago(int Dni, int CodigoEntidad, int Monto)
         {
             int Nivel = ValidarNivelUsuario(Dni);
+            //CORRECCIONES: No es la carga del pago, es la carga a la agenda, todavía no hay pago.
             DateTime FechaPago = DateTime.Today;
             DateTime FechaCreacion = DateTime.Today;
             Pago NuevoPago = new Pago(Dni, CodigoEntidad, FechaCreacion, FechaPago, Monto);
@@ -84,6 +87,7 @@ namespace Logica
                 string NuevoReporte = "La entidad " + Entidades[i].nombre + "está gestionada por ";
                 for (int x = 0; x < Proveedores.Count; x++)
                 {
+                    //CORRECCIONES: Estas agregando todos los proveedores, solo tenes que agregar el proveedor de esa entidad.
                     NuevoReporte += Proveedores[x].nombre;
                 }
                 DevolverReportes.Add(NuevoReporte);
@@ -95,6 +99,8 @@ namespace Logica
         {
             int UltimoRegistroPosicion = 0;
             DateTime UltimoRegistroValor = DateTime.Today;
+
+            //CORRECCIONES: No es para nada optimo, vimos muchas herramientas para mejroar esto.
             for (int i = 0; i < Pagos.Count; i++)
             {
                 if(Pagos[i].dni == Dni && Pagos[i].codigoEntidad == CodigoEntidad)
@@ -123,6 +129,7 @@ namespace Logica
                     {
                         if(Proveedores[x].codigo == Entidades[i].codigoProveedor)
                         {
+                            //CORRECCIONES: El proveedor deberia recibir un evento, agregarlo y calcular el saldo (comentario en la clase proveedor)
                             Proveedores[x].saldo += Pagos[UltimoRegistroPosicion].monto;
                             string Tipo = "Pago";
                             DateTime FechaEvento = DateTime.Today;

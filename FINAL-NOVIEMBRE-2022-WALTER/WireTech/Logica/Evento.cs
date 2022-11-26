@@ -11,7 +11,7 @@ namespace Logica
         public string tipo { get; set; }
         public double dinero { get; set; }
         public DateTime fecha { get; set; }
-
+//CORRECCIONES: No es correcto abusar de constructores, si creamos constructores custom tenemos que crear un constructor base
         public Evento(string Tipo, double Dinero, DateTime Fecha)
         {
             tipo = Tipo;

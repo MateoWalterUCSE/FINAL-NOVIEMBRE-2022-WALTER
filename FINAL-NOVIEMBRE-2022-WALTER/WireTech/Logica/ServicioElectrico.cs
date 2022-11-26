@@ -8,6 +8,7 @@ namespace Logica
 {
     public class ServicioElectrico : Entidad
     {
+        //CORRECCIONES: Este descuento debe calcularse, no se guarda, es un metodo virtual en la clase base y hacerle un override donde corresponda, por ej esta clase
         public int porcentajeImpuestos { get; set; }
         public ZonasPais Zona { get; set; }
 
